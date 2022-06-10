@@ -28,18 +28,46 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
+
+  let fname = "<h1>Lucy Boilett</h1>";
+  if (variables.name != null && variables.lastname != null)
+    fname = `<h1>${variables.name}${variables.lastname}</h1>`;
+
+  let role = `<h2>Web Developer</h2>`;
+  if (variables.role != null) role = `<h2>${variables.role}</h2>`;
+
+  let local = `<h3>Miami, USA</h3>`;
+  if (variables.city != null && variables.country != null)
+    local = `<h3>${variables.city}, ${variables.country}</h3>`;
+
+  let tw = `<li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>`;
+  if (variables.twitter != null)
+    tw = `<li><a href="${variables.twitter}"><i class="fab fa-twitter"></i></a></li>`;
+
+  let gt = `<li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>`;
+  if (variables.github != null)
+    gt = `<li><a href="${variables.github}"><i class="fab fa-github"></i></a></li>`;
+
+  let lk = `<li><a href="https://linkedin.com/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>`;
+  if (variables.linkedin != null)
+    lk = `<li><a href="${variables.linkedin}"><i class="fab fa-linkedin"></i></a></li>`;
+
+  let ins = `<li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>`;
+  if (variables.instagram != null)
+    ins = `<li><a href="${variables.instagram}"><i class="fab fa-instagram"></i></a></li>`;
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>${variables.name}${variables.lastname}</h1>
-          <h2>${variables.role}</h2>
-          <h3>${variables.city}, ${variables.country}</h3>
+          ${fname}
+          ${role}
+          ${local}
           <ul class="${variables.socialMediaPosition}">
-            <li><a href="${variables.twitter}"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="${variables.github}"><i class="fab fa-github"></i></a></li>
-            <li><a href="${variables.linkedin}"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="${variables.instagram}"><i class="fab fa-instagram"></i></a></li>
+            ${tw}
+            ${gt}
+            ${lk}
+            ${ins}
           </ul>
         </div>
     `;
